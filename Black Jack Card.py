@@ -12,12 +12,12 @@ def create_deck():
     return deck
 
 def deal_card(deck, hand):
-    """Deal a card from the deck to the player's hand."""
+    """Card from deck to players hand"""
     card = deck.pop()
     hand.append(card)
 
 def calculate_score(hand):
-    """Calculate the score based on the hand of cards."""
+    """ Counting the summation of cards """
     score = 0
     aces_count = hand.count('A')
     
@@ -28,6 +28,7 @@ def calculate_score(hand):
         elif rank in ('J', 'Q', 'K'):
             score += 10
     
+    #For loop when you get ace you can decide to choose 11 or 1 to add up
     for _ in range(aces_count):
         if score + 11 <= 21:
             score += 11
@@ -37,7 +38,7 @@ def calculate_score(hand):
     return score
 
 def blackjack():
-    print("Let's play Blackjack!")
+    print("Playing BLACKJACK!!!!!1")
     
     deck = create_deck()
     player_hand = []
@@ -71,23 +72,28 @@ def blackjack():
             else:
                 game_over = True
     
-    while dealer_score < 17 and dealer_score <= player_score and player_score <= 21:
+    while dealer_score<17 and dealer_score<= player_score and player_score<= 21:
         deal_card(deck, dealer_hand)
         dealer_score = calculate_score(dealer_hand)
     
     print(f"\nYour final hand: {player_hand}, final score: {player_score}")
+
     print(f"Dealer's final hand: {dealer_hand}, final score: {dealer_score}")
     
     if player_score > 21:
         print("You went over 21. You lose!")
+
     elif dealer_score > 21:
         print("Dealer went over 21. You win!")
+
     elif player_score == dealer_score:
         print("It's a draw!")
+
     elif player_score > dealer_score:
         print("You win!")
+
     else:
         print("You lose!")
 
-# Start the game
+# Executing the fuction of the game
 blackjack()
